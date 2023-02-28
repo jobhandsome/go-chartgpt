@@ -1,0 +1,11 @@
+port: 9999
+debug: true
+
+mysql:
+  host: 127.0.0.1
+  port: 3346
+  pass: 123456
+  user: root
+  dbname: chatgpt
+  charset: utf8mb4
+
