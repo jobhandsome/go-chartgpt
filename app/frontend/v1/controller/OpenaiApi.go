@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"go-chatgpt/pkg/utils"
+	"go.uber.org/zap"
 )
 
 const (
@@ -31,6 +32,7 @@ func Completions(text string) ([]byte, error) {
 	}
 	jsonData, _ := json.Marshal(formData)
 	resp, err := utils.SendRequest(url, bytes.NewBuffer(jsonData), headers, "POST")
+	zap.L().Info(string(resp))
 	if err != nil {
 		return nil, err
 	}
@@ -60,6 +62,7 @@ func ImageGenerations(text string, n int, size string, responseFormat string) ([
 
 	jsonData, _ := json.Marshal(formData)
 	resp, err := utils.SendRequest(url, bytes.NewBuffer(jsonData), headers, "POST")
+	zap.L().Info(string(resp))
 	if err != nil {
 		return nil, err
 	}

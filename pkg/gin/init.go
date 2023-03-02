@@ -3,7 +3,10 @@ package gin
 import (
 	"github.com/gin-gonic/gin"
 	"go-chatgpt/app/frontend/v1/config"
+	"go-chatgpt/app/middleware"
+	"go-chatgpt/pkg/logger"
 	"go-chatgpt/pkg/orm"
+	"go.uber.org/zap"
 	"log"
 )
 
@@ -24,8 +27,15 @@ func Init() *gin.Engine {
 	// 引入 gorm'
 	orm.Init()
 
+	// 初始化 logger
+	logger.Init()
+
 	// 创建一个默认路由
 	r := gin.Default()
+
+	// 初始化中间件
+	r.Use(middleware.GinLogger(zap.L()), middleware.GinRecovery(zap.L(), true))
+
 	// 注册路由
 	InitRoutes(r)
 
