@@ -10,5 +10,12 @@ func Router(r *gin.Engine) {
 	{
 		v1.GET("/test", controller.Test)
 		v1.GET("/completions", controller.GetCompletions)
+		// 用户组
+		user := v1.Group("/user")
+		{
+			user.POST("/login", controller.UserLogin)
+			user.POST("/register", controller.UserRegister)
+			user.GET("/wechat-code", controller.WechatCode)
+		}
 	}
 }

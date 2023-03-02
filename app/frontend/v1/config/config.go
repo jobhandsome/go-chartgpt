@@ -1,6 +1,6 @@
 package config
 
-type MySQLConfig struct {
+type Mysql struct {
 	User     string `yaml:"user"`
 	Password string `yaml:"pass"`
 	Host     string `yaml:"host"`
@@ -9,10 +9,16 @@ type MySQLConfig struct {
 	Charset  string `yaml:"charset"`
 }
 
+type Wechat struct {
+	Appid  string `yaml:"appid"`
+	Secret string `yaml:"secret"`
+}
+
 type FrontendYaml struct {
-	Port  int         `yaml:"port"`
-	Debug bool        `yaml:"debug"`
-	MySQL MySQLConfig `yaml:"mysql"`
+	Port   int    `yaml:"port"`
+	Debug  bool   `yaml:"debug"`
+	MySQL  Mysql  `yaml:"mysql"`
+	Wechat Wechat `yaml:"wechat"`
 }
 
 var Config *FrontendYaml

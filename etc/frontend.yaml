@@ -1,11 +1,15 @@
 port: 9999
 debug: true
 
+wechat:
+  appid: wx24b9889098f996d2
+  secret: cb23ebc131d52200d56f5b460b80c4a5
+
 mysql:
-  host: 127.0.0.1
-  port: 3346
-  pass: 123456
-  user: root
+  host: 8.140.156.63
+  port: 3306
+  pass: NeTE5SaDr6P8c6GX
+  user: chatgpt
   dbname: chatgpt
   charset: utf8mb4
 
