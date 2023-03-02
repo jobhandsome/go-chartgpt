@@ -4,7 +4,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"math/rand"
 	"net/http"
+	"path"
 	"regexp"
+	"runtime"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -41,6 +43,16 @@ func ServerError(ctx *gin.Context, message string) {
 		Data:    nil,
 	})
 	return
+}
+
+// GetCurrentAbPathByCaller 获取当前执行文件绝对路径（go run）
+func GetCurrentAbPathByCaller() string {
+	var abPath string
+	_, filename, _, ok := runtime.Caller(0)
+	if ok {
+		abPath = path.Dir(filename)
+	}
+	return abPath
 }
 
 func RandString(len int) string {
