@@ -35,7 +35,7 @@ func UserRegister(ctx *gin.Context) {
 
 	var findCount int64
 
-	orm.Orm.Table(user.TableName()).Where("useremail = ?", params.UserEmail).Count(&findCount)
+	orm.Orm.Table(user.TableName()).Where("user_email = ?", params.UserEmail).Count(&findCount)
 
 	if findCount > 0 {
 		utils.Fail(ctx, "邮箱已注册，请前往登录...")

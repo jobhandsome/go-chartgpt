@@ -2,6 +2,7 @@ package orm
 
 import (
 	"fmt"
+	"go-chatgpt/app/frontend/models"
 	"go-chatgpt/app/frontend/v1/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -19,10 +20,10 @@ func Init() {
 		return
 	}
 
-	//err = open.AutoMigrate(models.Users{}, models.UserVipLogs{})
-	//if err != nil {
-	//	log.Fatal("Database link failure : ", err.Error())
-	//	return
-	//}
+	err = open.AutoMigrate(models.Users{}, models.UserVipLogs{})
+	if err != nil {
+		log.Fatal("Database link failure : ", err.Error())
+		return
+	}
 	Orm = open
 }
