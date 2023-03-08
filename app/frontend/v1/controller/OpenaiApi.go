@@ -9,7 +9,7 @@ import (
 
 const (
 	ApiUrl      = "https://api.openai.com/v1/" // OpenAI 地址
-	ApiKey      = "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"
+	ApiKey      = "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"
 	ContentType = "application/json"
 )
 
