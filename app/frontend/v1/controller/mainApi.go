@@ -10,18 +10,12 @@ import (
 )
 
 func Test(ctx *gin.Context) {
-	var params types.TestRequest
-	if err := ctx.ShouldBindQuery(&params); err != nil {
-		utils.ServerError(ctx, err.Error())
-		return
-	}
-
-	fmt.Println(params)
+	ApiKey := GetApiKey()
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"code":    http.StatusOK,
 		"message": "success",
-		"data":    params,
+		"data":    ApiKey,
 	})
 	return
 }

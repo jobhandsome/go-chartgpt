@@ -20,7 +20,7 @@ func Init() {
 		return
 	}
 
-	err = open.AutoMigrate(models.Users{}, models.UserVipLogs{})
+	err = open.AutoMigrate(models.Users{}, models.UserVipLogs{}, models.OpenaiConfig{})
 	if err != nil {
 		log.Fatal("Database link failure : ", err.Error())
 		return
