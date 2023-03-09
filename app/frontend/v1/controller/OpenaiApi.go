@@ -12,6 +12,7 @@ import (
 const (
 	ApiUrl      = "https://api.openai.com/v1/" // OpenAI 地址
 	ContentType = "application/json"
+	UserAgent   = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/111.0"
 )
 
 // GetApiKey 获取OpenAI的key
@@ -37,6 +38,7 @@ func Completions(text string) ([]byte, error) {
 	headers := map[string]string{
 		"Content-Type":  ContentType,
 		"Authorization": "Bearer " + ApiKey,
+		"User-Agent":    UserAgent,
 	}
 
 	// 组装body数据
@@ -67,6 +69,7 @@ func ImageGenerations(text string, n int, size string, responseFormat string) ([
 	headers := map[string]string{
 		"Content-Type":  ContentType,
 		"Authorization": "Bearer " + ApiKey,
+		"User-Agent":    UserAgent,
 	}
 
 	// 组装body数据
